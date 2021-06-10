@@ -12,25 +12,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bonita.iht.iht;
+package com.bonita.iht.best;
+
+import java.util.concurrent.Callable;
 
 import org.springframework.stereotype.Component;
 
-import picocli.CommandLine;
 import picocli.CommandLine.Command;
-import picocli.CommandLine.Option;
+import picocli.CommandLine.Mixin;
 
 @Component
-@Command(name = "truthTeller",
-        subcommands = { BestToolCommand.class, BestWineCommand.class, CommandLine.HelpCommand.class },
-        description = "Hello! I'm glad to see you. I'm gonna tell you the truth.")
-public class TruthTellerCommand {
+@Command(name = "bestTool",
+        description = "Truth about the best tool to use, depending on your definition of truth :)")
+public class BestToolCommand implements Callable<Integer> {
 
-    public enum Mode {
-        HONNEST, DELUSIONAL
+    @Mixin
+    Mode mode;
+
+    @Override
+    public Integer call() throws Exception {
+        System.out.println("Mode: " + mode.mode.toString());
+
+        switch (mode.mode) {
+            case HONNEST:
+                System.out.println("Quarkus 4ever");
+                return 0;
+            case DELUSIONAL:
+            default:
+                System.out.println("Yeah Spring framework will bring us to mars");
+                return 1;
+        }
     }
-
-    @Option(names = { "-m", "--mode" })
-    Mode mode = Mode.DELUSIONAL;
 
 }

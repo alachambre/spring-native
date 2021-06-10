@@ -1,5 +1,6 @@
-package com.bonita.iht.iht;
+package com.bonita.iht;
 
+import com.bonita.iht.best.Mode;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;

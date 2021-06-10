@@ -1,4 +1,4 @@
-package com.bonita.iht.iht;
+package com.bonita.iht;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

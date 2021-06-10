@@ -12,17 +12,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bonita.iht.iht;
+package com.bonita.iht;
 
+import com.bonita.iht.best.BestToolCommand;
+import com.bonita.iht.best.BestWineCommand;
+import com.bonita.iht.la.BuildPageCommand;
+import org.springframework.stereotype.Component;
+
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-public class Mode {
+@Component
+@Command(name = "truthTeller",
+        subcommands = {
+            BestToolCommand.class, BestWineCommand.class, BuildPageCommand.class, CommandLine.HelpCommand.class },
+        description = "Hello! I'm glad to see you. I'm gonna tell you the truth.")
+public class TruthTellerCommand {
 
-    public enum ModeOption {
+    public enum Mode {
         HONNEST, DELUSIONAL
     }
 
     @Option(names = { "-m", "--mode" })
-    ModeOption mode = ModeOption.DELUSIONAL;
+    Mode mode = Mode.DELUSIONAL;
 
 }

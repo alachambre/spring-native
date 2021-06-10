@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bonita.iht.iht;
+package com.bonita.iht.best;
 
 import java.util.concurrent.Callable;
 
@@ -22,9 +22,9 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Mixin;
 
 @Component
-@Command(name = "bestTool",
-        description = "Truth about the best tool to use, depending on your definition of truth :)")
-public class BestToolCommand implements Callable<Integer> {
+@Command(name = "bestWine",
+        description = "Truth about the best wine to drink, depending on your definition of truth :)")
+public class BestWineCommand implements Callable<Integer> {
 
     @Mixin
     Mode mode;
@@ -35,11 +35,11 @@ public class BestToolCommand implements Callable<Integer> {
 
         switch (mode.mode) {
             case HONNEST:
-                System.out.println("Quarkus 4ever");
+                System.out.println("True men drink RED wine.");
                 return 0;
             case DELUSIONAL:
             default:
-                System.out.println("Yeah Spring framework will bring us to mars");
+                System.out.println("White wine is the sweetest thing on earth, a real gift from gods!");
                 return 1;
         }
     }
