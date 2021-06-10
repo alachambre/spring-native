@@ -1,6 +1,5 @@
 package com.bonita.iht.la;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.designer.ArtifactBuilderFactory;
 import org.bonitasoft.web.designer.config.UiDesignerPropertiesBuilder;
@@ -17,13 +16,13 @@ import java.nio.file.StandardOpenOption;
 public class BuildPageCommand implements Runnable {
 
 
-    @CommandLine.Option(names = {"-w", "--workspace"})
+    @CommandLine.Option(names = {"-w", "--workspace"}, required = true)
     String workspace;
 
-    @CommandLine.Option(names = {"-o", "--output"})
+    @CommandLine.Option(names = {"-o", "--output"}, required = true)
     String output;
 
-    @CommandLine.Option(names = {"-p", "--page"})
+    @CommandLine.Option(names = {"-p", "--page"}, required = true)
     String pageId;
 
     @Override
@@ -35,7 +34,13 @@ public class BuildPageCommand implements Runnable {
         var artifactBuilder = new ArtifactBuilderFactory(properties).create();
         try {
             var zip = artifactBuilder.buildPage(pageId);
-            Files.write(Path.of(output), zip, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+
+            var outputPath = Path.of(output);
+            if(Files.exists(outputPath)) {
+                Files.delete(outputPath);
+            }
+            Files.write(outputPath, zip, StandardOpenOption.CREATE);
+
             log.info("Page buid success, output: {}", output);
         } catch (Exception e) {
             throw new RuntimeException("Failed to build page", e);

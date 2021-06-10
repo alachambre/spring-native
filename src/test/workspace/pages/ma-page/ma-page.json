@@ -1,0 +1,32 @@
+{
+  "modelVersion" : "2.2",
+  "previousArtifactVersion" : "1.0.0",
+  "id" : "ma-page",
+  "name" : "maPage",
+  "lastUpdate" : 1623335675746,
+  "rows" : [
+    [ ]
+  ],
+  "assets" : [
+    {
+      "id" : "65464d18-2f97-4301-93c0-9d90ff4f8b31",
+      "name" : "style.css",
+      "type" : "css",
+      "order" : 1,
+      "external" : false
+    },
+    {
+      "id" : "fcd74cb0-a076-4bea-8fc9-374a2a765862",
+      "name" : "ui-bootstrap-tpls-0.13.0.min.js",
+      "type" : "js",
+      "order" : 2,
+      "external" : false
+    }
+  ],
+  "inactiveAssets" : [ ],
+  "variables" : { },
+  "hasValidationError" : false,
+  "uuid" : "71791220-8418-4270-a264-61eda748a2db",
+  "type" : "page",
+  "description" : "Page generated with Bonita UI designer"
+}

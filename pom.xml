@@ -125,7 +125,13 @@
                 <!-- The native image build needs to know the entry point to your application -->
                 <mainClass>com.bonita.iht.IhtApplication</mainClass>
                 <imageName>${project.artifactId}</imageName>
-                <buildArgs>--trace-class-initialization</buildArgs>
+                <buildArgs>
+                    --trace-class-initialization
+                    -H:IncludeResources=org/joda/time/.*
+                    --initialize-at-build-time=javax.el.MapELResolver
+                    --initialize-at-build-time=javax.el.ListELResolver
+                    --initialize-at-build-time=javax.el.ExpressionFactory
+                </buildArgs>
               </configuration>
               <executions>
                 <execution>
